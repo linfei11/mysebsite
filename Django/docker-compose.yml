@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql
+    expose:
+      - "3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_PASSWORD=123456
+
+
+  web:
+    build: .
+    tty: true
+    # command: pip install -i https://pypi.doubanio.com/simple/ -r requirements.txt
+    # command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+

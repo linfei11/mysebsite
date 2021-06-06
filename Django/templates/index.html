@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>规则展示平台</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>插入时间</th>
+                <th>更新时间</th>
+                <th>规则添加者</th>
+                <th>规则等级</th>
+                <th>导入类型</th>
+                <th>规则id</th>
+                <th>规则类型</th>
+                <th>规则名</th>
+                <th>规则内容</th>
+                <th>验证规则的pcap文件</th>
+                <th>用户评论</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attack in attacks %}
+            <tr>
+                <td>{{attack.insert_time}}</td>
+                <td>{{attack.update_time}}</td>
+                <td>{{attack.user}}</td>
+                <td>{{attack.risk_level}}</td>
+                <td>{{attack.input_type}}</td>
+                <td>{{attack.rule_id}}</td>
+                <td>{{attack.rule_type}}</td>
+                <td>{{attack.rule_name}}</td>
+                <td>{{attack.content}}</td>
+                <td>{{attack.pcap_path}}</td>
+                <td>{{attack.comment}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
